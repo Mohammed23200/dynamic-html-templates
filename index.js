@@ -14,6 +14,12 @@ app.get('/r/:subreddit',(req,res)=>{
     res.render('subreddit',{subreddit })
 })
 
+app.get("/cats",(req,res)=>{
+    const cats=[//this like data base of cats
+        "blue","rocket",'monty','steephanie','lucifer'
+    ]
+    res.render('cats',{cats})
+})
 app.get('/rand',(req,res)=>{
     const num = Math.floor(Math.random() *10)+1
     res.render('random',{rand:num})
