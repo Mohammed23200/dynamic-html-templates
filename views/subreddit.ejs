@@ -5,10 +5,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%= subreddit%>></title>
+    <title><%= name%></title>
 </head>
 <body>
-    <h1>Browsing <%= subreddit%> subreddit</h1>
+    <h1>Browsing <%= name%> subreddit</h1>
+    <h2><%= description %></h2>
+    <p><%= subscribers %> total subscribers</p>
+    <hr>
+
+    <%for(let post of posts){%>
+        <article>
+            <h3><%= post.title %> <b><%= post.author %></b></h3>
+            <% if (post.img){ %>//if i exist
+            <img src="<%= post.img%>" alt="">
+            <% } %>
+        </article>
+
+    <%}%>
 
 </body>
 </html>

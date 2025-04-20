@@ -1,8 +1,8 @@
 const express = require("express")
 const app = express()
 const path = require('path')
-
-
+const  redditDate=require("./data.json")
+console.log(redditDate)
 app.set('view engine','ejs')//used to configure **Express.js** to use **EJS (Embedded JavaScript)** as the template engine.
 app.set('views', path.join(__dirname, '/views'));
 app.get("/",(req,res)=>{
@@ -11,7 +11,13 @@ app.get("/",(req,res)=>{
 
 app.get('/r/:subreddit',(req,res)=>{
     const {subreddit} = req.params
-    res.render('subreddit',{subreddit })
+    const data = redditDate[subreddit]
+    if (data){
+        res.render('subreddit',{...data })
+    }
+    else{
+        res.render('Notfound',{subreddit})
+    }
 })
 
 app.get("/cats",(req,res)=>{
@@ -27,3 +33,4 @@ app.get('/rand',(req,res)=>{
 app.listen(3000,()=>{
     console.log("listing at port 3000")
 })
+//when you use `{ ...data }`, you're creating a new object that contains **all the properties of `data`**, with their respective keys and values copied into the new object.
