@@ -2,6 +2,9 @@ const express = require("express")
 const app = express()
 const path = require('path')
 const  redditDate=require("./data.json")
+
+app.use(express.static(path.join(__dirname, 'public')))
+
 console.log(redditDate)
 app.set('view engine','ejs')//used to configure **Express.js** to use **EJS (Embedded JavaScript)** as the template engine.
 app.set('views', path.join(__dirname, '/views'));
